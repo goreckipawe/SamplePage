@@ -1,0 +1,5 @@
+<div *ngFor='let item of pictures_array; let last = last;'>
+    <div [style.left.px]="item.x" [style.top.px]="item.y" [ngStyle]="{'position':'fixed'}">
+        <img src="{{item.image}}" height="200px" [ngStyle]="{'width': last ? item.width + 'px' : '200px'}">
+    </div>
+</div>

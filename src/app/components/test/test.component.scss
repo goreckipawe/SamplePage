@@ -1,0 +1,63 @@
+.table_row{
+    border: 3px solid red !important;
+}
+
+.table_top{
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: blue;
+
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: blue;
+
+    border-right-width: 3px;
+    border-right-style: solid;
+    border-right-color: blue;
+}
+
+.table_bottom{
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: blue;
+
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: blue;
+
+    border-right-width: 3px;
+    border-right-style: solid;
+    border-right-color: blue;
+}
+
+.table_left_right{
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: blue;
+
+    border-right-width: 3px;
+    border-right-style: solid;
+    border-right-color: blue;
+}
+
+.table_row_selected{
+    border: 3px solid blue;
+}
+
+::ng-deep .mat-table {
+    width: 100% !important;
+}
+
+::ng-deep .mat-row {
+    margin-top: 20px !important;
+}
+
+::ng-deep .mat-header-cell {
+    text-align: center !important;
+}
+
+::ng-deep tr.highlight {
+    border-top: 10px solid;
+    border-bottom: 10px solid;
+    border-color: transparent;
+}

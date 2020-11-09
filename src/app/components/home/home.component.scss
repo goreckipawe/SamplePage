@@ -1,0 +1,41 @@
+.table_row{
+    border: 3px solid red;
+}
+
+.table_top{
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: blue;
+
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: blue;
+
+    border-right-width: 3px;
+    border-right-style: solid;
+    border-right-color: blue;
+}
+
+.table_bottom{
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: blue;
+
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: blue;
+
+    border-right-width: 3px;
+    border-right-style: solid;
+    border-right-color: blue;
+}
+
+.table_left_right{
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: blue;
+
+    border-right-width: 3px;
+    border-right-style: solid;
+    border-right-color: blue;
+}

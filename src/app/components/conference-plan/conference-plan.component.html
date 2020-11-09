@@ -1,0 +1,45 @@
+<div style="height: 100%; margin-top: 40px; margin-left: 40px; margin-right: 40px;">
+    <div class="row" style="margin-bottom: 20px;">
+        <button mat-stroked-button color="primary" class="buttons" (click)="saveSelectedLectures()">Save selected lectures</button>
+        <button mat-stroked-button color="primary" class="buttons" (click)="showSelectedUserLectures()">Show selected user lectures</button>
+        <h2 class="buttons" style="margin-top: 10px;">Click on a topic to select a lecture</h2>
+        <button mat-stroked-button color="primary" class="buttons" (click)="test()">test</button>
+    </div>
+    <div id="export" style="margin-bottom: 40px;">
+        <!--wypisanie wybranych prelekcje przez urzytkownika-->
+        <div *ngIf="paths_user_hidden" class="row" style="text-align: center;">
+            <div style="margin-bottom: 20px; padding-top: 10px; text-align: center; color: white; background-color: green; width: 100%;">
+                <h2>User lectures</h2>
+            </div>
+            <div class="row" style="width: 100%; margin-bottom: 20px;">
+                <div *ngFor='let item of paths_user;' class="topic_user" [ngStyle]="{width: 100/(paths_user)?.length + '%'}"><!--ustawienie szerokości div w zależności od liczby prelekcji wybranych przez użytkownika-->
+                    <div style="width: 90%; height: 100%;" class="topic_user_inside">
+                        <div class="topic_text">
+                            <h2>{{item.topics}}</h2>
+                        </div>
+                        <div class="topic_text2">
+                            <h3>{{item.startTimes}} - {{item.endTimes}}</h3>
+                        </div>
+                    </div>
+                </div>  
+            </div>    
+        </div>
+        
+        <!--wypisanie wszystkich prelekcje wraz z ścieżkami-->
+        <div *ngFor='let item of paths; let index_p = index' class="row">
+            <div class="path">
+                <h3 class="path_text">{{item.path}}</h3>
+            </div>
+            <div *ngFor='let topic of item.topics; let index_t = index' class="paths">
+                <div class="topic" (click)="selectingTopics(index_p, index_t)">
+                    <div class="topic_text">
+                        <h2>{{topic}}</h2>
+                    </div>
+                    <div class="topic_text2">
+                        <h3>{{item.startTimes[index_t]}} - {{item.endTimes[index_t]}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

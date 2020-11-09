@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+      <button class="title" mat-icon-button (click)="onToggleSidenav()">
+          <mat-icon style="font-size: 30px;">menu</mat-icon>
+      </button>
+  </div>
+  <div class="row" style="margin: 0; padding: 0; width: 100%;">
+    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10" style="margin-top: 5px;">
+        <a class="title" routerLink="/home">PawełGórecki</a>
+    </div>
+    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+      <button mat-icon-button (click)="onToggleSidenav()">
+        <div class="clock">{{time}}</div>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
