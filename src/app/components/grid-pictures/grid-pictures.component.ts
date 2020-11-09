@@ -29,7 +29,7 @@ export class GridPicturesComponent implements OnInit {
 
   //jest to metoda do wyliczania położenia obrazków
   //muszę przyznać że nie wiem czy dobrze zrozumiałem to zadanie 
-  //więc zrobiłem je tak by obrazki ustawiały się w kwadrat ktury zaczyna się od wskazanej pozycji
+  //więc zrobiłem je tak by obrazki ustawiały się w kwadrat który zaczyna się od wskazanej pozycji
   //start_x i start_y to punkt początkowy pierwszego obrazka
   //shift_x i shift_y przesunięcie następnego obrazka względem poprzedniego 
   test(start_x: number, start_y: number, shift_x: number, shift_y: number){
@@ -37,7 +37,7 @@ export class GridPicturesComponent implements OnInit {
     const sqrt = Math.floor(Math.sqrt(length)) + 1; //wyznaczam kwadrat liczby elemętów w zbiorze
     const rest_of_the_division = length % sqrt; //dzielę dłógość zboru przez wyznaczony wcześniej kwadrat by uzyskać resztę z dzielenia
     const end = sqrt - rest_of_the_division; //liczę ile zostanie elemętów w ostatnim wierszu 
-    const end_width_spacing = end === 1 ? shift_x : (end - 1) * (shift_x + 50);//wyliczm długość ostatniego elemętu przez doliczenie wszystkich przesunięć jakie powinien zajmować  jeśli w ostatnim wierszu jest więcej niż jeden element
+    const end_width_spacing = end === 1 ? shift_x : (end - 1) * (shift_x + 50);//wyliczam długość ostatniego elemętu przez doliczenie wszystkich przesunięć jakie powinien zajmować  jeśli w ostatnim wierszu jest więcej niż jeden element
     const end_width = (end * 200) + end_width_spacing; //dodaję do długości przesunięć dłógość wszystkich elemętów
     let r = 1;
     let x = start_x; //ustawiam pozycję startową obrazka
@@ -59,7 +59,7 @@ export class GridPicturesComponent implements OnInit {
       }
     }
 
-    if (rest_of_the_division !== 0) {//ustawiam dłógość ostatniego obrazka w zależność od liczby obrazków w ostatnim rzędzie
+    if (rest_of_the_division !== 0) {//ustawiam dłógość ostatniego obrazka w zależności od liczby obrazków w ostatnim rzędzie
       this.pictures_array[length - 1].width = end_width;
     } else {
       this.pictures_array[length - 1].width = 200;

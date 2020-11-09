@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -19,7 +20,7 @@ export class ConferencePlanComponent implements OnInit {
   selecting_topics: Lecture[] = [];
   paths_user_hidden: boolean = false;
 
-  constructor(private samplePageDataDownloadService: SamplePageDataDownloadService, public dialog: MatDialog) { }
+  constructor(private samplePageDataDownloadService: SamplePageDataDownloadService, public dialog: MatDialog, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.agenda = this.samplePageDataDownloadService.agenda; //pobranie wcześniej załadowanych danych o prelekcjach
@@ -33,7 +34,7 @@ export class ConferencePlanComponent implements OnInit {
     });
   }
 
-  selectingTopics(index_p, index_t){//metoda dodająca prelekcję wybraną przez urzytkownika do jego zbioru prelekcji
+  selectingTopics(index_p, index_t){//metoda dodająca prelekcję wybraną przez użytkownika do jego zbioru prelekcji
     const lecture: Lecture = {} as Lecture;
 
     lecture.path_id = index_p;
@@ -46,7 +47,7 @@ export class ConferencePlanComponent implements OnInit {
     let success: number = 0;
     if (this.selecting_topics.length > 0) {
       this.samplePageDataDownloadService.agendaUserAdd(this.selecting_topics).subscribe(res => {
-        success = res.success;//błąd może się pokazywać ponieważ nie robiłem juz interfejsu do danych tego typu
+        success = res.success;//błąd może się pokazywać ponieważ nie robiłem już interfejsu do danych tego typu i nie wpływa na działanie aplikacji
 
         if (success === 0) {
           this.dialogInformation("The lectures overlap!");
@@ -81,22 +82,29 @@ export class ConferencePlanComponent implements OnInit {
 
     if (this.paths_user.length > 0) {
       this.paths_user_hidden = true;
-      console.log(this.paths_user);
     } else {
       this.paths_user_hidden = false;
       this.dialogInformation("The user does not have a saved plan!");
     }
   }
 
-  dialogInformation(information: string){//metoda odpowiadająza za komunikat dla urzytkownika
+  dialogInformation(information: string){//metoda odpowiadająza za komunikat dla użytkownika
     this.dialog.open(InformationComponent, {
       data: information,
       disableClose: true
     });
   }
 
-  test(){
-    console.log(document.getElementById("export"));
+  saveThePlan(){//metoda do generowania pliku html
+    let content = document.documentElement.innerHTML;//pobranie zawartości strony
+    content = content.replace(/<mat-toolbar.*>.*?<\/mat-toolbar>/ig,'');//usunięcie niechcianych tagów
+    content = content.replace(/<buttons.*>.*?<\/buttons>/ig,'');
+    content = content.replace(/<app-footer.*>.*?<\/app-footer>/ig,'');
+    let a = document.createElement('a');//stworzenie linku
+    let file = new Blob([content], {type: 'text/plain'});//załadowanie zawartości pliku
+    a.href = URL.createObjectURL(file);// pliku
+    a.download = 'Plan prelekcji.html';//ustawienie nazwy plikowi 
+    a.click();//kliknięcie na stworzony link/tag a
   }
 
 }

@@ -1,10 +1,12 @@
 <div style="height: 100%; margin-top: 40px; margin-left: 40px; margin-right: 40px;">
-    <div class="row" style="margin-bottom: 20px;">
-        <button mat-stroked-button color="primary" class="buttons" (click)="saveSelectedLectures()">Save selected lectures</button>
-        <button mat-stroked-button color="primary" class="buttons" (click)="showSelectedUserLectures()">Show selected user lectures</button>
-        <h2 class="buttons" style="margin-top: 10px;">Click on a topic to select a lecture</h2>
-        <button mat-stroked-button color="primary" class="buttons" (click)="test()">test</button>
-    </div>
+    <buttons><!--mój własny tag potrzebny do usunięcia przycisków podczas zapisu dokumętu-->
+        <div class="row" style="margin-bottom: 20px;">
+            <button mat-stroked-button color="primary" class="buttons" (click)="saveSelectedLectures()">Save selected lectures</button>
+            <button mat-stroked-button color="primary" class="buttons" (click)="showSelectedUserLectures()">Show selected user lectures</button>
+            <button mat-stroked-button color="primary" class="buttons" (click)="saveThePlan()">Save the plan</button>
+            <h2 class="buttons" style="margin-top: 10px;">Click on a topic to select a lecture</h2>
+        </div>
+    </buttons>
     <div id="export" style="margin-bottom: 40px;">
         <!--wypisanie wybranych prelekcje przez urzytkownika-->
         <div *ngIf="paths_user_hidden" class="row" style="text-align: center;">

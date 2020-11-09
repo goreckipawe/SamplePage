@@ -12,7 +12,7 @@ export class SamplePageDataDownloadService {
 
   private _agenda = new BehaviorSubject<Agenda>(null);
   private _agenda_user = new BehaviorSubject<PathUser[]>([]);
-  private dataStore: {agenda: Agenda, agenda_user: PathUser[]} = {agenda: null, agenda_user: []}; //deklaracja zmienych z danymi wraz z wartościami startowymi
+  private dataStore: {agenda: Agenda, agenda_user: PathUser[]} = {agenda: null, agenda_user: []}; //deklaracja zmiennych z danymi wraz z wartościami startowymi
   readonly agenda = this._agenda.asObservable();
   readonly agenda_user = this._agenda_user.asObservable();
 
@@ -33,7 +33,7 @@ export class SamplePageDataDownloadService {
     );
   }
 
-  getAgendaUser(){//metoda do pobrania prelekcji wybranych przez urzytkownika
+  getAgendaUser(){//metoda do pobrania prelekcji wybranych przez użytkownika
     this.http.get<PathUser[]>(this.GET_AGENDA_USER_GET).pipe(filter(Boolean), shareReplay(), map(({data}) => data)).subscribe(data => {
         this.dataStore.agenda_user = data;
         this._agenda_user.next(Object.assign({}, this.dataStore).agenda_user);
@@ -43,7 +43,7 @@ export class SamplePageDataDownloadService {
     );
   }
 
-  agendaUserAdd(lecture: Lecture[]): Observable<Lecture[]> {//metoda do zapisania prelekcji wybranych przez urzytkownika
+  agendaUserAdd(lecture: Lecture[]): Observable<Lecture[]> {//metoda do zapisania prelekcji wybranych przez użytkownika
     return this.http.post<Lecture[]>(this.POST_AGENDA_USER_ADD, lecture);
   }
 }
